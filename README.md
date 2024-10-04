@@ -1,9 +1,8 @@
 # terraformtest
 terraformtest1
 
-terraform init
+# terraform init
 
-terraform init
 
 Initializing the backend...
 
@@ -20,7 +19,7 @@ should now work.
 If you ever set or change modules or backend configuration for Terraform,
 rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
-root@rafael-Inspiron-3501:/home/rafael/Área de Trabalho/repoterra/terraform/dev# terraform plan
+root@rafael-Inspiron-3501:/home/rafael/Área de Trabalho/repoterra/terraform/dev# # terraform plan
 var.environment
   The environment name
 
@@ -278,7 +277,8 @@ Changes to Outputs:
 
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-terraform apply -auto-approve
+# terraform apply -auto-approve
+
 aws_launch_template.example: Refreshing state... [id=lt-0c06d22d22baeb58c]
 aws_db_instance.db: Refreshing state... [id=db-QIGIZ66DTT6B6EHXYMONOEZ4GY]
 
