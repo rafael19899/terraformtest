@@ -1,0 +1,12 @@
+apiVersion: v2
+name: my-microservice
+description: A Helm chart for deploying my microservice
+version: 0.1.0
+appVersion: 1.0.0
+replicaCount: 2
+image:
+  repository: my-microservice
+  tag: latest
+service:
+  type: ClusterIP
+  port: 80
