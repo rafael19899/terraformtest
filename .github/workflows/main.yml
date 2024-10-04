@@ -15,7 +15,7 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
       with:
-        terraform_version: 1.9.7  
+        terraform_version: 1.0.11
 
     - name: Configure AWS Credentials
       env:
@@ -24,20 +24,20 @@ jobs:
       run: echo "AWS credentials configured"
 
     - name: Terraform Init
-      working-directory: ./terraform/dev  
+      working-directory: ./terraform/dev
       run: terraform init
 
     - name: Terraform Plan
-      working-directory: ./terraform/dev  
+      working-directory: ./terraform/dev
       run: terraform plan
 
     - name: Run Tests
-      working-directory: ./terraform/dev  
+      working-directory: ./terraform/dev
       run: |
         echo "Running tests..."
         terraform validate
 
     - name: Terraform Apply
       if: success()
-      working-directory: ./terraform/dev  
+      working-directory: ./terraform/dev
       run: terraform apply -auto-approve
