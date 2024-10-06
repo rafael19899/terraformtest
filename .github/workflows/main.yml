@@ -23,6 +23,7 @@ jobs:
       with:
         terraform_version: 1.0.11
 
+
     - name: Terraform Init
       working-directory: ./terraform/dev  # Correct path
       run: terraform init
