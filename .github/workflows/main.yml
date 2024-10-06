@@ -24,14 +24,9 @@ jobs:
         terraform_version: 1.0.11
 
     - name: Terraform Init
-      working-directory: ./terraform/dev 
+      working-directory: ./terraform/dev  
       run: terraform init
 
     - name: Terraform Plan
       working-directory: ./terraform/dev  
-      run: terraform plan -out=tfplan
-
-    - name: Terraform Apply
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      working-directory: ./terraform/dev  
-      run: terraform apply -input=false tfplan
+      run: terraform plan
