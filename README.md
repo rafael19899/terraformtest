@@ -5,7 +5,7 @@ Navigate to the Ohio Directory:
 
 
 
-# terraformtest/dev/main.tf # OHIO INSTANCES
+# terraformtest/terraform/dev/main.tf # OHIO INSTANCES
 
 # Initialize Terraform:
 terraform init
