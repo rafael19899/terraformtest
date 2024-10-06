@@ -34,4 +34,7 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       working-directory: ./terraform/dev
-      run: echo yes | terraform apply
+      run: |
+        terraform apply -input=false <<EOF
+        yes
+        EOF
