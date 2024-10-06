@@ -26,6 +26,6 @@ resource "aws_db_instance" "db" {
   instance_class       = "db.t4g.micro"  # Supported instance class
   db_name              = "mydb"
   username             = "foo"
-  password             = "bar"
+  password             = "Novasenha1010"
   parameter_group_name = "default.mysql8.0"
 }
