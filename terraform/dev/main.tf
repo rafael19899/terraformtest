@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 resource "aws_launch_template" "example" {
-  name = "Ubuntu_20.04-x86_64-SQL_2022_Standard-2023.10.16"
-  image_id = "ami-094be4c7f1e506a7a"   # Using the provided Ubuntu AMI ID with SQL Server Standard
+  name = "example-launch-template"
+  image_id = "ami-0c55b159cbfafe1f0"  # Using a known valid Amazon Linux 2 AMI
   instance_type = "t3.medium"  # Ensure this is a compatible instance type
 
   lifecycle {
