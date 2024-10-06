@@ -1,4 +1,4 @@
-name: Deploy Microservices
+name: Deploy Microservices to AWS EKS
 
 on:
   push:
