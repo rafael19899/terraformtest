@@ -22,7 +22,7 @@ jobs:
 
     - name: Set up kubectl
       run: |
-        aws eks update-kubeconfig --name <nome-do-seu-cluster> --region us-east-2
+        aws eks update-kubeconfig --name seu-cluster-eks --region us-east-2
 
     - name: Set up Helm
       uses: azure/setup-helm@v2
