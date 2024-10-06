@@ -28,8 +28,8 @@ resource "aws_db_instance" "db" {
   engine_version       = "8.0.32"
   instance_class       = "db.m5.large"
   db_name              = "mydb"
-  username             = "foo"
-  password             = "StrongPass1010"  # Ensure password is at least 8 characters long
+  username             = ${{ secrets.DB_USER }}
+  password             = ${{ secrets.DB_PASSWORD }}  # Ensure password is at least 8 characters long
   parameter_group_name = "default.mysql8.0"
   publicly_accessible  = false
   vpc_security_group_ids = ["sg-031cc3dcf2dcd9737"]  # Update with your Ohio security group ID
