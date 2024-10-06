@@ -2,12 +2,10 @@ provider "aws" {
   region = var.region
 }
 
-resource "aws_instance" "example" {
+resource "aws_launch_template" "example" {
   name_prefix   = "example-"
   image_id      = var.ami_id
   instance_type = var.instance_type
-}
-
 
   lifecycle {
     create_before_destroy = true
@@ -19,9 +17,9 @@ resource "aws_autoscaling_group" "example" {
     id      = aws_launch_template.example.id
     version = "$Latest"
   }
-  min_size             = 1
-  max_size             = 10
-  vpc_zone_identifier  = var.subnet_ids
+  min_size            = 1
+  max_size            = 10
+  vpc_zone_identifier = var.subnet_ids
 }
 
 resource "aws_db_instance" "db" {
