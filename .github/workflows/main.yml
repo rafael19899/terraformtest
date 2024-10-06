@@ -25,7 +25,7 @@ jobs:
 
     - name: Terraform Destroy
       working-directory: ./terraform/dev
-      run: yes yes | terraform destroy -auto-approve
+      run: yes yes | terraform destroy
 
     - name: Terraform Init
       working-directory: ./terraform/dev  
