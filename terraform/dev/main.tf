@@ -32,7 +32,7 @@ resource "aws_db_instance" "db" {
   password             = ${{ secrets.DB_PASSWORD }}  # Ensure password is at least 8 characters long
   parameter_group_name = "default.mysql8.0"
   publicly_accessible  = false
-  vpc_security_group_ids = ["sg-031cc3dcf2dcd9737"]  # Update with your Ohio security group ID
-  db_subnet_group_name = "default-vpc-0fe08d86539991b68"  # Ensure this is a valid subnet group
+  vpc_security_group_ids = ["sg-031cc3dcf2dcd9737"]  
+  db_subnet_group_name = "default-vpc-0fe08d86539991b68" 
   skip_final_snapshot  = true
 }
