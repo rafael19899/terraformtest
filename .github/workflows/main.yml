@@ -31,7 +31,6 @@ jobs:
       working-directory: ./terraform/dev  
       run: terraform plan
 
-    - name: Approve and Apply
+    - name: Apply
       working-directory: ./terraform/dev
-      run: |
-        echo yes | terraform apply -input=false
+      run: yes yes | terraform apply -input=false
