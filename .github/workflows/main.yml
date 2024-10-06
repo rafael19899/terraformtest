@@ -31,10 +31,7 @@ jobs:
       working-directory: ./terraform/dev  
       run: terraform plan
 
-    - name: Terraform Apply
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    - name: Approve and Apply
       working-directory: ./terraform/dev
       run: |
-        terraform apply -input=false <<EOF
-        yes
-        EOF
+        yes "yes" | terraform apply -input=false
