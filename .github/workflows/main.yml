@@ -23,16 +23,10 @@ jobs:
       with:
         terraform_version: 1.0.11
 
-
     - name: Terraform Init
-      working-directory: ./terraform/dev  # Correct path
+      working-directory: ./terraform/dev  # Ensure this matches your directory structure
       run: terraform init
 
     - name: Terraform Plan
-      working-directory: ./terraform/dev  # Correct path
+      working-directory: ./terraform/dev  # Ensure this matches your directory structure
       run: terraform plan
-
-    - name: Terraform Apply
-      if: success()
-      working-directory: ./terraform/dev  # Correct path
-      run: terraform apply -auto-approve
