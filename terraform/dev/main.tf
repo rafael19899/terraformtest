@@ -3,9 +3,11 @@ provider "aws" {
 }
 
 resource "aws_launch_template" "example" {
-  name = "example-launch-template"
-  image_id = var.ami_id
+  name_prefix   = "example-"
+  image_id      = var.ami_id
   instance_type = var.instance_type
+}
+
 
   lifecycle {
     create_before_destroy = true
