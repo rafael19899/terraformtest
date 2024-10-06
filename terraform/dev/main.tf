@@ -2,10 +2,10 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_launch_configuration" "example" {
-  name          = "example-launch-configuration"
-  image_id      = "ami-032346ab877c418af"   # Using the provided Ubuntu AMI ID
-  instance_type = "t2.micro"
+resource "aws_launch_template" "example" {
+  name = "example-launch-template"
+  image_id = "ami-032346ab877c418af"
+  instance_type = "t3.large"
 
   lifecycle {
     create_before_destroy = true
@@ -13,19 +13,26 @@ resource "aws_launch_configuration" "example" {
 }
 
 resource "aws_autoscaling_group" "example" {
-  launch_configuration = aws_launch_configuration.example.id
+  launch_template {
+    id      = aws_launch_template.example.id
+    version = "$Latest"
+  }
   min_size             = 1
   max_size             = 10
-  vpc_zone_identifier  = ["subnet-12345678"]
+  vpc_zone_identifier  = ["subnet-037f4dcb7503b7388", "subnet-0717fa595b184d6f4", "subnet-04fee9ec178ba1043", "subnet-0856591be956d828e", "subnet-035e49680f3da0f7e", "subnet-04423432118c0b7d9"]
 }
 
 resource "aws_db_instance" "db" {
   allocated_storage    = 20
   engine               = "mysql"
-  engine_version       = "8.0.32"  # Using the correct MySQL version
-  instance_class       = "db.t4g.micro"  # Supported instance class
+  engine_version       = "8.0.32"
+  instance_class       = "db.m5.large"
   db_name              = "mydb"
   username             = "foo"
-  password             = "Novasenha1010"
+  password             = "StrongPass1010"  # Ensure password is at least 8 characters long
   parameter_group_name = "default.mysql8.0"
+  publicly_accessible  = false
+  vpc_security_group_ids = ["sg-0cf2d9c3921140c8a"]
+  db_subnet_group_name = "default-vpc-0f11fa074a9b64fb5"
+  skip_final_snapshot  = true
 }
