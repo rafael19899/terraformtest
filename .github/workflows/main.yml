@@ -34,4 +34,4 @@ jobs:
     - name: Approve and Apply
       working-directory: ./terraform/dev
       run: |
-        yes "yes" | terraform apply -input=false
+        yes "yes" | terraform apply -input=false | yes "yes"
