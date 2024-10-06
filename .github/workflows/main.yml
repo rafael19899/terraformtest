@@ -24,14 +24,14 @@ jobs:
         terraform_version: 1.0.11
 
     - name: Terraform Init
-      working-directory: ./terraform/ohio  # Make sure this path is correct
+      working-directory: ./terraform/ohio  # Ensure this matches your directory structure
       run: terraform init
 
     - name: Terraform Plan
-      working-directory: ./terraform/ohio  # Make sure this path is correct
+      working-directory: ./terraform/ohio  # Ensure this matches your directory structure
       run: terraform plan
 
     - name: Terraform Apply
       if: success()
-      working-directory: ./terraform/ohio  # Make sure this path is correct
+      working-directory: ./terraform/ohio  # Ensure this matches your directory structure
       run: terraform apply -auto-approve
