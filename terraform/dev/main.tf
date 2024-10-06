@@ -3,9 +3,9 @@ provider "aws" {
 }
 
 resource "aws_launch_template" "example" {
-  name = "example-launch-template"
-  image_id = "ami-032346ab877c418af"
-  instance_type = "t3.large"
+  name = "Ubuntu_20.04-x86_64-SQL_2022_Standard-2023.10.16"
+  image_id = "ami-094be4c7f1e506a7a"   # Using the provided Ubuntu AMI ID with SQL Server Standard
+  instance_type = "t3.medium"  # Ensure this is a compatible instance type
 
   lifecycle {
     create_before_destroy = true
