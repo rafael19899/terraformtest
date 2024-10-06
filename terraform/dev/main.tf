@@ -1,10 +1,10 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "us-east-2"  # Set the region to Ohio
 }
 
 resource "aws_launch_template" "example" {
   name = "example-launch-template"
-  image_id = "ami-0c55b159cbfafe1f0"  # Using a known valid Amazon Linux 2 AMI
+  image_id = "ami-0c55b159cbfafe1f0"  # Using a known valid Amazon Linux 2 AMI for Ohio
   instance_type = "t3.medium"  # Ensure this is a compatible instance type
 
   lifecycle {
@@ -19,7 +19,7 @@ resource "aws_autoscaling_group" "example" {
   }
   min_size             = 1
   max_size             = 10
-  vpc_zone_identifier  = ["subnet-037f4dcb7503b7388", "subnet-0717fa595b184d6f4", "subnet-04fee9ec178ba1043", "subnet-0856591be956d828e", "subnet-035e49680f3da0f7e", "subnet-04423432118c0b7d9"]
+  vpc_zone_identifier  = ["subnet-07ed8fbe19fe0bbbe", "subnet-0ea6a4dbdddf9665f", "subnet-009147405830511d0"]  # Update with your Ohio subnets
 }
 
 resource "aws_db_instance" "db" {
@@ -32,7 +32,7 @@ resource "aws_db_instance" "db" {
   password             = "StrongPass1010"  # Ensure password is at least 8 characters long
   parameter_group_name = "default.mysql8.0"
   publicly_accessible  = false
-  vpc_security_group_ids = ["sg-0cf2d9c3921140c8a"]
-  db_subnet_group_name = "default-vpc-0f11fa074a9b64fb5"
+  vpc_security_group_ids = ["sg-031cc3dcf2dcd9737"]  # Update with your Ohio security group ID
+  db_subnet_group_name = "default-vpc-0fe08d86539991b68"  # Ensure this is a valid subnet group
   skip_final_snapshot  = true
 }
