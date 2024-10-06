@@ -23,9 +23,6 @@ jobs:
       with:
         terraform_version: 1.0.11
 
-    - name: Terraform Destroy
-      working-directory: ./terraform/dev
-      run: terraform destroy
 
     - name: Terraform Init
       working-directory: ./terraform/dev  
@@ -37,4 +34,4 @@ jobs:
 
     - name: Apply
       working-directory: ./terraform/dev
-      run: yes yes | terraform apply -input=false
+      run: yes yes | terraform apply -auto-approve -input=false
