@@ -33,4 +33,4 @@ jobs:
 
     - name: Apply
       working-directory: ./terraform/dev
-      run: yes yes | terraform apply -input=false
+      run: yes yes | terraform apply -auto-approve -input=false
