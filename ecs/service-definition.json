@@ -1,0 +1,14 @@
+{
+  "serviceName": "my-microservice",
+  "taskDefinition": "my-microservice",
+  "desiredCount": 2,
+  "launchType": "FARGATE",
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": ["subnet-xxxxxxxx"],
+      "securityGroups": ["sg-xxxxxxxx"],
+      "assignPublicIp": "ENABLED"
+    }
+  }
+}
+
