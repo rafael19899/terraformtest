@@ -1,4 +1,4 @@
-name: Deploy Microservices to AWS ECS
+name: Deploy Microservices to AWS EKS
 
 on:
   push:
@@ -20,14 +20,18 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-2 # Ohio
 
-    - name: Register Task Definition
+    - name: Set up kubectl
       run: |
-        aws ecs register-task-definition \
-          --cli-input-json file://ecs/task-definition.json
+        aws eks update-kubeconfig --name eks-cluster-demo --region us-east-2
 
-    - name: Update ECS Service
+    - name: Set up Helm
+      uses: azure/setup-helm@v2
+      with:
+        version: 'latest'
+
+    - name: Deploy with Helm
       run: |
-        aws ecs update-service \
-          --cluster my-cluster \
-          --service my-microservice \
-          --force-new-deployment
+        helm upgrade --install my-microservice ./helm-charts/my-microservice
+
+    - name: Set environment variable
+      run: echo "MY_VAR=my_value" >> $GITHUB_ENV
